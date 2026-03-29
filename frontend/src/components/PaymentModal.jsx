@@ -115,7 +115,8 @@ const PaymentModal = ({ isOpen, onClose, project, userId, onSuccess }) => {
       
     } catch (error) {
       console.error('Payment error:', error);
-      toast.error('Failed to initialize payment. Please try again.');
+      const errorMessage = error?.response?.data?.error || error?.message || 'Failed to initialize payment. Please try again.';
+      toast.error(errorMessage);
     } finally {
       setIsProcessing(false);
     }

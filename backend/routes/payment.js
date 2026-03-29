@@ -8,14 +8,28 @@ dotenv.config();
 
 const router = express.Router();
 
+const razorpayKeyId = process.env.RAZORPAY_KEY_ID;
+const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
+
+const invalidRazorpayKey = !razorpayKeyId || razorpayKeyId.startsWith('http');
+if (invalidRazorpayKey) {
+  console.error('Invalid Razorpay key configuration. RAZORPAY_KEY_ID must be the actual key ID (rzp_test_xxx or rzp_live_xxx), not a Razorpay.me URL.');
+}
+
 // Initialize Razorpay
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
+  key_id: razorpayKeyId,
+  key_secret: razorpayKeySecret,
 });
 
 // Create Order
 router.post('/create-order', async (req, res) => {
+  if (invalidRazorpayKey) {
+    return res.status(500).json({
+      success: false,
+      error: 'Invalid Razorpay configuration: RAZORPAY_KEY_ID must be your actual Razorpay API key id, not the merchant link.',
+    });
+  }
   try {
     const { amount, projectId, projectTitle, userId } = req.body;
 

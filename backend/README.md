@@ -54,4 +54,7 @@ cp backend/.env.example backend/.env
 
 Edit `backend/.env` and replace placeholder values like `MONGODB_URI`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, and `JWT_SECRET`.
 
+- `RAZORPAY_KEY_ID` must be the actual Razorpay API key id, for example `rzp_test_1234567890abcdef`.
+- Do not paste the Razorpay.me merchant link (`https://razorpay.me/@...`) into `RAZORPAY_KEY_ID`.
+
 > `backend/.env` is ignored by git, so your private credentials stay out of source control.
