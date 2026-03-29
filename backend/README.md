@@ -44,3 +44,14 @@ A modern, full-stack web application for selling premium project source code wit
 ```bash
 git clone https://github.com/yourusername/project-portfolio.git
 cd project-portfolio
+```
+
+### 2. Create your local environment file
+Copy the backend environment example and set your own secret values:
+```bash
+cp backend/.env.example backend/.env
+```
+
+Edit `backend/.env` and replace placeholder values like `MONGODB_URI`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, and `JWT_SECRET`.
+
+> `backend/.env` is ignored by git, so your private credentials stay out of source control.
