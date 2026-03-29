@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const RAZORPAY_LINK = import.meta.env.VITE_RAZORPAY_LINK || 'https://razorpay.me/@ankitanandsingh';
 
 const PaymentModal = ({ isOpen, onClose, project, userId, onSuccess }) => {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -161,6 +162,15 @@ const PaymentModal = ({ isOpen, onClose, project, userId, onSuccess }) => {
                   <li>• Net Banking</li>
                   <li>• Wallets</li>
                 </ul>
+              </div>
+              <div className="bg-green-600/10 rounded-lg p-4">
+                <p className="text-sm text-green-300 mb-2">🔗 Razorpay Merchant Link:</p>
+                <p className="text-xs text-gray-300">
+                  If the checkout flow does not work, you can pay directly using Razorpay: 
+                  <a href={RAZORPAY_LINK} target="_blank" rel="noreferrer" className="text-purple-300 underline">
+                    {RAZORPAY_LINK}
+                  </a>
+                </p>
               </div>
             </div>
             
