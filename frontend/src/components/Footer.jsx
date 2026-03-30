@@ -28,9 +28,9 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li><Link to="/projects" className="text-gray-400 hover:text-purple-400 transition-colors">Projects</Link></li>
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Contact</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Blog</a></li>
+              <li><Link to="/services" className="text-gray-400 hover:text-purple-400 transition-colors">Services</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors">About</Link></li>
+              <li><Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
           
@@ -38,10 +38,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-white">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Refund Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Cookie Policy</a></li>
+              <li><Link to="/terms" className="text-gray-400 hover:text-purple-400 transition-colors">Terms & Conditions</Link></li>
+              <li><Link to="/privacy" className="text-gray-400 hover:text-purple-400 transition-colors">Privacy Policy</Link></li>
+              <li><a href="mailto:support@projectlearn.dev" className="text-gray-400 hover:text-purple-400 transition-colors">Support</a></li>
+              <li><a href="mailto:support@projectlearn.dev" className="text-gray-400 hover:text-purple-400 transition-colors">Contact</a></li>
             </ul>
           </div>
           
