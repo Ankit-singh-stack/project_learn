@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import paymentRouter from './routes/payment.js';
 
 dotenv.config();
+
+import paymentRouter from './routes/payment.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
