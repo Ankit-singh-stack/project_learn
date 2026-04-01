@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import paymentRouter from './routes/payment.js';
 
 dotenv.config();
 
@@ -36,6 +37,9 @@ app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
+
+// Payment routes
+app.use('/api/payment', paymentRouter);
 
 // ============= ROUTES =============
 
@@ -178,53 +182,6 @@ app.get('/api/projects/:id', (req, res) => {
   } else {
     res.status(404).json({ success: false, error: 'Project not found' });
   }
-});
-
-// Payment endpoints
-app.post('/api/payment/create-order', (req, res) => {
-  const { amount, projectId, projectTitle, userId } = req.body;
-  
-  console.log('💰 Creating payment order:', { amount, projectId, projectTitle, userId });
-  
-  res.json({
-    success: true,
-    orderId: `order_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-    amount: amount * 100,
-    currency: 'INR',
-    key: process.env.RAZORPAY_KEY_ID || 'rzp_test_mock_key',
-    message: 'Test mode - Payment processing is simulated'
-  });
-});
-
-app.post('/api/payment/verify-payment', (req, res) => {
-  const { razorpay_order_id, razorpay_payment_id, projectId, userId } = req.body;
-  
-  console.log('✅ Verifying payment:', { razorpay_order_id, razorpay_payment_id, projectId, userId });
-  
-  res.json({
-    success: true,
-    message: 'Payment verified successfully!',
-    purchase: {
-      id: Date.now(),
-      projectId: projectId,
-      userId: userId,
-      paymentId: razorpay_payment_id,
-      orderId: razorpay_order_id,
-      accessGranted: true
-    }
-  });
-});
-
-app.post('/api/payment/check-purchase', (req, res) => {
-  const { userId, projectId } = req.body;
-  
-  console.log('🔍 Checking purchase:', { userId, projectId });
-  
-  // For testing, return false (not purchased)
-  res.json({
-    purchased: false,
-    message: 'Project not purchased yet'
-  });
 });
 
 // 404 handler for undefined routes
