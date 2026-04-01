@@ -60,7 +60,7 @@ router.post('/create-order', async (req, res) => {
       projectTitle,
       amount,
       orderId: order.id,
-      paymentId: 'pending',
+      paymentId: `pending_${order.id}`,
       status: 'pending',
       accessGranted: false
     });
